@@ -3,8 +3,11 @@ import { AnalysisResult, JobMatchResult, ResumeSection, ImprovedContent } from "
 
 export class GeminiService {
   private getClient() {
-    // @ts-ignore
-    const apiKey = window.process?.env?.API_KEY || (typeof process !== 'undefined' ? process.env.API_KEY : '');
+    // Attempt to safely retrieve the API key from common locations
+    const apiKey = (typeof process !== 'undefined' && process.env?.API_KEY) || 
+                   (window as any).process?.env?.API_KEY || 
+                   "";
+                   
     return new GoogleGenAI({ apiKey: apiKey });
   }
 
