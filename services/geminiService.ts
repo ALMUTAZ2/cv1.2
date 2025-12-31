@@ -41,7 +41,7 @@ export class GeminiService {
 
     try {
       const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview', 
+         model: 'gemini-2.0-flash-lite', 
         contents: systemInstruction + `\n\nINPUT:\n${text}`,
         config: {
           temperature: 0.1,
@@ -102,7 +102,7 @@ export class GeminiService {
 
     try {
       const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview', 
+       model: 'gemini-2.0-flash-lite', 
         contents: prompt,
         config: {
           temperature: 0.7,
@@ -130,7 +130,7 @@ export class GeminiService {
 
     try {
       const response = await ai.models.generateContent({
-        model: 'gemini-3-pro-preview', 
+        model: 'gemini-2.0-flash-lite', 
         contents: prompt,
         config: {
           temperature: 0.2,
