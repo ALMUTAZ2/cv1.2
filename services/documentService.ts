@@ -1,7 +1,7 @@
 import * as pdfjs from 'pdfjs-dist';
 
-// استخدام مسار يتطابق تماماً مع إصدار المكتبة لضمان الاستقرار في بيئة Vercel
-pdfjs.GlobalWorkerOptions.workerSrc = 'https://esm.sh/pdfjs-dist@5.4.530/build/pdf.worker.mjs';
+// تحديث المسار ليتوافق مع الإصدار 4.x.x الأكثر استقراراً في بيئة الـ Browser
+pdfjs.GlobalWorkerOptions.workerSrc = `https://esm.sh/pdfjs-dist@4.10.38/build/pdf.worker.mjs`;
 
 declare const mammoth: any;
 
