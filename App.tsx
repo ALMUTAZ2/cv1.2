@@ -1,13 +1,12 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
-import { FileUploader } from './components/FileUploader';
-import { Dashboard } from './components/Dashboard';
-import { Editor } from './components/Editor';
-import { JobMatchModal } from './components/JobMatchModal';
-import { AppStep, AnalysisResult, ResumeSection } from './types';
-import { GeminiService } from './services/geminiService';
-import { DocumentService } from './services/documentService';
-import { Cpu, Github, Sparkles, Key, AlertTriangle, ShieldCheck, RefreshCcw } from 'lucide-react';
+import { FileUploader } from './components/FileUploader.tsx';
+import { Dashboard } from './components/Dashboard.tsx';
+import { Editor } from './components/Editor.tsx';
+import { JobMatchModal } from './components/JobMatchModal.tsx';
+import { AppStep, AnalysisResult, ResumeSection } from './types.ts';
+import { GeminiService } from './services/geminiService.ts';
+import { DocumentService } from './services/documentService.ts';
+import { Cpu, Github, ShieldCheck, RefreshCcw, Key } from 'lucide-react';
 
 const STORAGE_KEYS = {
   STEP: 'ats_app_step',
@@ -57,7 +56,9 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const checkApiKey = async () => {
+      // @ts-ignore
       if (window.aistudio) {
+        // @ts-ignore
         const hasKey = await window.aistudio.hasSelectedApiKey();
         setApiKeySelected(hasKey);
       } else {
@@ -68,20 +69,20 @@ const App: React.FC = () => {
   }, []);
 
   const handleOpenKeySelector = async () => {
+    // @ts-ignore
     if (window.aistudio) {
+      // @ts-ignore
       await window.aistudio.openSelectKey();
       setApiKeySelected(true);
     }
   };
 
   const handleReset = useCallback(() => {
-    // 1. Clear all localStorage
     localStorage.removeItem(STORAGE_KEYS.STEP);
     localStorage.removeItem(STORAGE_KEYS.RESUME_TEXT);
     localStorage.removeItem(STORAGE_KEYS.ANALYSIS);
     localStorage.removeItem(STORAGE_KEYS.SECTIONS);
     
-    // 2. Reset all states to initial values
     setAnalysis(null);
     setSections([]);
     setResumeText('');
@@ -89,7 +90,6 @@ const App: React.FC = () => {
     setShowMatchModal(false);
     setLoading(false);
     
-    // 3. Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 

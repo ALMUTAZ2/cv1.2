@@ -8,8 +8,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+        #root { min-height: 100vh; }
     </style>
+    <script>
+        // Polyfill for process.env to prevent ReferenceError in browser
+        window.process = {
+            env: {
+                NODE_ENV: 'production'
+            }
+        };
+    </script>
 <script type="importmap">
 {
   "imports": {

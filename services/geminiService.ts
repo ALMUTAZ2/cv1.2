@@ -1,9 +1,11 @@
 import { GoogleGenAI, Type } from "@google/genai";
-import { AnalysisResult, JobMatchResult, ResumeSection, ImprovedContent } from "../types";
+import { AnalysisResult, JobMatchResult, ResumeSection, ImprovedContent } from "../types.ts";
 
 export class GeminiService {
   private getClient() {
-    return new GoogleGenAI({ apiKey: process.env.API_KEY });
+    // @ts-ignore
+    const apiKey = window.process?.env?.API_KEY || (typeof process !== 'undefined' ? process.env.API_KEY : '');
+    return new GoogleGenAI({ apiKey: apiKey });
   }
 
   private calculateATSScore(data: any): number {
