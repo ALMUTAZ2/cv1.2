@@ -1,7 +1,7 @@
 import * as pdfjs from 'pdfjs-dist';
 
-// استخدام مسار خارجي موثوق للـ Worker لضمان التوافق مع Vercel
-pdfjs.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.5.136/pdf.worker.min.mjs';
+// استخدام مسار يتطابق تماماً مع إصدار المكتبة لضمان الاستقرار في بيئة Vercel
+pdfjs.GlobalWorkerOptions.workerSrc = 'https://esm.sh/pdfjs-dist@5.4.530/build/pdf.worker.mjs';
 
 declare const mammoth: any;
 
